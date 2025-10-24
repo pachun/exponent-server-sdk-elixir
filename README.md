@@ -12,30 +12,30 @@ ExponentServerSdk is currently able to push single and multiple messages to the 
 
 All HTTPoison Post Request body are automatically GZIP compressed
 
-You can install it from Hex:
+Add to your dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:exponent_server_sdk, "~> 0.2.0"}]
+  [
+    {:exponent_server_sdk, "~> 0.2.0"}
+  ]
 end
 ```
 
-Or from Github:
+Or to use the latest from GitHub:
 
 ```elixir
 def deps do
-  [{:exponent_server_sdk, github: "rdrop/exponent-server-sdk-elixir"}]
+  [
+    {:exponent_server_sdk, github: "rdrop/exponent-server-sdk-elixir"}
+  ]
 end
 ```
 
-and run `mix deps.get`.
+Then run:
 
-Now, list the `:exponent_server_sdk` application as your application dependency:
-
-```elixir
-def application do
-  [applications: [:exponent_server_sdk]]
-end
+```bash
+mix deps.get
 ```
 
 ## Usage
