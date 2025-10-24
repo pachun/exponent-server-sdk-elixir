@@ -24,9 +24,12 @@ defmodule ExponentServerSdk.PushNotificationTest do
         {:ok,
          %{
            "status" => "error",
-           "details" => %{"error" => "DeviceNotRegistered"},
+           "details" => %{
+             "error" => "DeviceNotRegistered",
+             "expoPushToken" => "ExponentPushToken[XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]"
+           },
            "message" =>
-             "\"ExponentPushToken[XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]\" is not a registered push notification recipient"
+             "\"ExponentPushToken[XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]\" is not a valid Expo push token"
          }}
 
       assert expected == PushNotification.push(message_map)
@@ -69,15 +72,21 @@ defmodule ExponentServerSdk.PushNotificationTest do
          [
            %{
              "status" => "error",
-             "details" => %{"error" => "DeviceNotRegistered"},
+             "details" => %{
+               "error" => "DeviceNotRegistered",
+               "expoPushToken" => "ExponentPushToken[XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]"
+             },
              "message" =>
-               "\"ExponentPushToken[XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]\" is not a registered push notification recipient"
+               "\"ExponentPushToken[XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]\" is not a valid Expo push token"
            },
            %{
              "status" => "error",
-             "details" => %{"error" => "DeviceNotRegistered"},
+             "details" => %{
+               "error" => "DeviceNotRegistered",
+               "expoPushToken" => "ExponentPushToken[YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY]"
+             },
              "message" =>
-               "\"ExponentPushToken[YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY]\" is not a registered push notification recipient"
+               "\"ExponentPushToken[YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY]\" is not a valid Expo push token"
            }
          ]}
 
