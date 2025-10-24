@@ -1,6 +1,6 @@
 defmodule ExponentServerSdk.Parser do
   @moduledoc """
-  A JSON parser tuned specifically for Expo Push Notification API responses. Based on Poison's
+  A JSON parser tuned specifically for Expo Push Notification API responses. Based on Jason's
   excellent JSON decoder.
   """
 
@@ -27,7 +27,7 @@ defmodule ExponentServerSdk.Parser do
   @spec parse(HTTPoison.Response.t()) :: success | error
   def parse(response) do
     handle_errors(response, fn body ->
-      {:ok, json} = Poison.decode(body)
+      {:ok, json} = Jason.decode(body)
       json["data"]
     end)
   end
@@ -47,7 +47,7 @@ defmodule ExponentServerSdk.Parser do
   @spec parse_list(HTTPoison.Response.t()) :: success_list | error
   def parse_list(response) do
     handle_errors(response, fn body ->
-      {:ok, json} = Poison.decode(body)
+      {:ok, json} = Jason.decode(body)
       json["data"]
     end)
   end
@@ -62,7 +62,7 @@ defmodule ExponentServerSdk.Parser do
         :ok
 
       %{body: body, status_code: status} ->
-        {:ok, json} = Poison.decode(body)
+        {:ok, json} = Jason.decode(body)
         {:error, json["errors"], status}
     end
   end

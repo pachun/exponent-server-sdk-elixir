@@ -80,11 +80,11 @@ defmodule ExponentServerSdk.PushNotification do
   end
 
   @doc """
-  Automatically process the request body using Poison JSON and GZip.
+  Automatically process the request body using Jason JSON and GZip.
   """
   def process_request_body(body) do
     body
-    |> Poison.encode!()
+    |> Jason.encode!()
     |> :zlib.gzip()
   end
 end

@@ -16,13 +16,13 @@ defmodule ExponentServerSdk.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :httpoison, :poison]]
+    [applications: [:logger, :httpoison, :jason]]
   end
 
   defp deps do
     [
       {:httpoison, "~> 2.0"},
-      {:poison, "~> 3.1.0"},
+      {:jason, "~> 1.4"},
       {:dialyze, "~> 0.2.1", only: [:dev, :test]},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:mock, "~> 0.3.2", only: :test},
