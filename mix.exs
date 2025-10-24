@@ -16,7 +16,7 @@ defmodule ExponentServerSdk.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :httpoison, :jason]]
+    [extra_applications: [:logger]]
   end
 
   defp deps do
