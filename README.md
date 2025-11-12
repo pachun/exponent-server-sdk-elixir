@@ -1,8 +1,4 @@
-ExponentServerSdk
-========
-[![Hex.pm](https://img.shields.io/hexpm/v/exponent_server_sdk.svg)](https://hex.pm/packages/exponent_server_sdk)
-[![Build Status](https://travis-ci.org/rdrop/exponent-server-sdk-elixir.svg?branch=master)](https://travis-ci.org/rdrop/exponent-server-sdk-elixir)
-[![Inline docs](https://inch-ci.org/github/rdrop/exponent-server-sdk-elixir.svg?branch=master)](https://inch-ci.org/github/rdrop/exponent-server-sdk-elixir)
+# ExponentServerSdk
 
 Use to send push notifications to Exponent Experiences from an Elixir/Phoenix server.
 
@@ -17,17 +13,7 @@ Add to your dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:exponent_server_sdk, "~> 0.2.0"}
-  ]
-end
-```
-
-Or to use the latest from GitHub:
-
-```elixir
-def deps do
-  [
-    {:exponent_server_sdk, github: "rdrop/exponent-server-sdk-elixir"}
+    {:exponent_server_sdk, github: "pachun/exponent-server-sdk-elixir"}
   ]
 end
 ```
@@ -63,6 +49,7 @@ message = %{
 ```
 
 #### Multiple Messages:
+
 ```elixir
 
 # Create a list of message maps (auto chunks list into lists of 100)
@@ -87,6 +74,7 @@ message_list = [
 ```
 
 #### Get Messages Delivery Statuses:
+
 ```elixir
 
 # Create a list of message ids
@@ -106,11 +94,17 @@ The complete format of the messages can be found [here.](https://docs.expo.io/ve
 See the [CONTRIBUTING.md](CONTRIBUTING.md) file for contribution guidelines.
 
 ## License
+
 ExponentServerSdk is licensed under the MIT license. For more details, see the `LICENSE`
 file at the root of the repository. It depends on Elixir, which is under the
 Apache 2 license.
 
+## Acknowledgements
+
+This project was originally created and maintained by [rdrop](https://github.com/rdrop). The current maintainer is grateful for their foundational work on this library.
+
 ### Inspiration
+
 [ex_twilio](https://github.com/danielberkompas/ex_twilio)
 
 [hex]: http://hex.pm

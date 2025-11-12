@@ -8,7 +8,7 @@ defmodule ExponentServerSdk.Mixfile do
       elixir: "~> 1.14",
       name: "ExponentServerSdk",
       description: "Exponent Push Notification API library for Elixir",
-      source_url: "https://github.com/rdrop/exponent-server-sdk-elixir",
+      source_url: "https://github.com/pachun/exponent-server-sdk-elixir",
       package: package(),
       docs: docs(),
       deps: deps()
@@ -38,10 +38,10 @@ defmodule ExponentServerSdk.Mixfile do
 
   defp package do
     [
-      maintainers: ["rdrop"],
+      maintainers: ["rdrop", "pachun"],
       licenses: ["MIT"],
       links: %{
-        "Github" => "https://github.com/rdrop/exponent-server-sdk-elixir.git"
+        "Github" => "https://github.com/pachun/exponent-server-sdk-elixir.git"
       }
     ]
   end
