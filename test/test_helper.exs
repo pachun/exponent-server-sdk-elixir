@@ -1,7 +1,6 @@
 ExUnit.start()
 
 defmodule TestHelper do
-  use ExUnit.Case, async: false
   alias ExponentServerSdk.PushNotification
   import Mock
 
