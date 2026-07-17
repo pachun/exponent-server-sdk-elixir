@@ -1,7 +1,7 @@
 defmodule ExponentServerSdk.PushNotification do
   @moduledoc """
   Provides a basic HTTP interface to allow easy communication with the Exponent Push Notification
-  API, by wrapping `HTTPotion`.
+  API, by wrapping `HTTPoison`.
 
   ## Examples
 
