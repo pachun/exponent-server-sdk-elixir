@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2026-08-29
+
+### Fixed
+
+- Stop push and receipt requests failing with `HTTPoison.Error :closed` after
+  a quiet period. Expo closes idle keep-alive connections, and hackney only
+  discovers this when it tries to write to one from its pool. Every request now
+  opens a fresh connection (`hackney: [pool: false]`).
+
 ## [0.3.0] - 2026-07-17
 
 Modernization of the actively-maintained fork now referenced by Expo's official

@@ -123,6 +123,11 @@ defmodule ExponentServerSdk.PushNotificationTest do
   # HTTPotion API
   ###
 
+  test ".process_request_options does not reuse pooled connections to Expo" do
+    options = PushNotification.process_request_options([])
+    assert options[:hackney] == [pool: false]
+  end
+
   test ".process_request_headers adds the correct headers" do
     headers = PushNotification.process_request_headers([])
     accepts = {:Accepts, "application/json"}

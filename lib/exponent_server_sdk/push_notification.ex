@@ -80,6 +80,16 @@ defmodule ExponentServerSdk.PushNotification do
   end
 
   @doc """
+  Opens a fresh connection for every request instead of reusing one from
+  hackney's pool. Expo closes idle connections, and hackney does not notice
+  until it tries to write to one, which fails with `:closed`.
+  """
+  @spec process_request_options(keyword) :: keyword
+  def process_request_options(options) do
+    Keyword.put(options, :hackney, pool: false)
+  end
+
+  @doc """
   Automatically process the request body using Jason JSON and GZip.
   """
   def process_request_body(body) do
