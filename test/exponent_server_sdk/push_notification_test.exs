@@ -123,9 +123,9 @@ defmodule ExponentServerSdk.PushNotificationTest do
   # HTTPotion API
   ###
 
-  test ".process_request_options does not reuse pooled connections to Expo" do
+  test ".process_request_options uses managed fresh HTTPS connections to Expo" do
     options = PushNotification.process_request_options([])
-    assert options[:hackney] == [pool: false]
+    assert options[:hackney] == [pool: :default, ssl_pooling: false, protocols: [:http1]]
   end
 
   test ".process_request_headers adds the correct headers" do

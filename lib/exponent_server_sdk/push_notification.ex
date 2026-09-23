@@ -80,13 +80,12 @@ defmodule ExponentServerSdk.PushNotification do
   end
 
   @doc """
-  Opens a fresh connection for every request instead of reusing one from
-  hackney's pool. Expo closes idle connections, and hackney does not notice
-  until it tries to write to one, which fails with `:closed`.
+  Uses managed HTTP/1 connections with TLS reuse disabled. Each HTTPS
+  request gets a fresh connection that hackney closes after completion.
   """
   @spec process_request_options(keyword) :: keyword
   def process_request_options(options) do
-    Keyword.put(options, :hackney, pool: false)
+    Keyword.put(options, :hackney, pool: :default, ssl_pooling: false, protocols: [:http1])
   end
 
   @doc """
