@@ -62,8 +62,10 @@ defmodule ExponentServerSdk.Parser do
         :ok
 
       %{body: body, status_code: status} ->
-        {:ok, json} = Jason.decode(body)
-        {:error, json["errors"], status}
+        case Jason.decode(body) do
+          {:ok, json} -> {:error, json["errors"], status}
+          {:error, %Jason.DecodeError{}} -> {:error, body, status}
+        end
     end
   end
 end

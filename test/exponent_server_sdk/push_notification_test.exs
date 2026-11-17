@@ -1,6 +1,8 @@
 defmodule ExponentServerSdk.PushNotificationTest do
   use ExUnit.Case, async: false
 
+  import Mock
+
   import TestHelper
 
   alias ExponentServerSdk.PushMessage
@@ -34,6 +36,24 @@ defmodule ExponentServerSdk.PushNotificationTest do
 
       assert expected == PushNotification.push(message_map)
     end)
+  end
+
+  test "returns the upstream failure when Expo cannot accept a notification" do
+    message = %{
+      to: "ExponentPushToken[XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX]",
+      title: "New email",
+      body: "A new message arrived"
+    }
+
+    upstream_failure =
+      "upstream connect error or disconnect/reset before headers. reset reason: connection termination"
+
+    Mock.with_mock HTTPoison.Base, [:passthrough],
+      request: fn PushNotification, %HTTPoison.Request{method: :post}, _, _, _, _ ->
+        {:ok, %HTTPoison.Response{status_code: 503, body: upstream_failure}}
+      end do
+      assert PushNotification.push(message) == {:error, upstream_failure, 503}
+    end
   end
 
   test ".push_list should return the proper response from Expo" do
